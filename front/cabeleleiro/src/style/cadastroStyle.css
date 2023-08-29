@@ -1,0 +1,59 @@
+.cadastroPage {
+    width: 100vw;
+    height: 100vh;
+  
+    background-color: silver;
+    font-family: sans-serif;
+    text-align: center;
+  
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .divForm {
+    width: 600px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 1px 8px 0.1px rgb(119, 118, 118);
+  }
+  
+  .cadastroPage form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  
+  }
+  
+  
+  .cadastroPage form label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  form button {
+    border-radius: 15px;
+    padding: 0.3rem;
+    border-style: none;
+    background-color: blue;
+    color: white;
+  }
+  
+  form input {
+    border: none;
+    border-bottom: 1px solid black;
+  
+    margin-top: 0.5rem;
+  }
+  
+  form input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
+  
+  h3 {
+    font-size: 11px;
+    margin-top: 1rem;
+  }

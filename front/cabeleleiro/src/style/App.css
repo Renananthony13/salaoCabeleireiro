@@ -1,0 +1,113 @@
+:root {
+  --background: rgba(34, 39, 46, 1);
+  --background-second: rgba(28, 33, 40, 1);
+  --border-color: rgba(82, 255, 168, 0.49);
+  --label-color: rgba(173, 186, 199, 1);
+}
+
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  max-width: 100vw;
+  height: 100vh;
+  
+  padding: 0rem;
+  text-align: center;
+}
+
+.nav {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
+  background-color: var(--background-second);
+  /* position: fixed; */
+
+}
+
+.ulNavBar {
+  width: 40vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ulNavBar li {
+  padding: 1rem;
+  list-style: none;
+}
+
+li a {
+  color: rgba(173, 186, 199, 1);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+li:hover {
+  background-color: var(--background);
+  
+}
+
+
+nav {
+  width: 100%;
+  height: 100vh;
+}
+
+.loginCadastro h1 {
+  font-size: 16px;
+  border-bottom: 1px solid var(--label-color);
+ 
+}
+.loginCadastro h1 button {
+  background-color: var(--background-second);
+  border: none;
+  color: var(--label-color);
+  
+}
+
+
+/* 
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
