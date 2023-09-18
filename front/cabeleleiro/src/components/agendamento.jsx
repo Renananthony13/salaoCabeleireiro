@@ -1,4 +1,4 @@
-import '../style/App.css'
+// import '../style/App.css'
 import '../style/agendamentoStyle.css'
 import axios from 'axios';
 import { useState } from 'react';

@@ -1,4 +1,5 @@
 const express = require('express');
+const {celebrate, Segments, Joi} = require('celebrate')
 
 const router = express.Router();
 
@@ -22,19 +23,43 @@ const viewController = require('../controllers/viewController.js')
 //rotas
 // login
 router.post('/login', loginController)
+
 //cadastro
 router.post('/cadastrar', cadastrarUsuarioController)
+
 // agendamento
-router.post('/agendar/:id', newAgendamento)
+router.post('/agendar/:id', celebrate({
+    [Segments.PARAMS]: {
+        id: Joi.number().required()
+    }
+}), newAgendamento)
+
 // alterar agendamento
-router.put('/alteraragendamento/:id', alterarAgendamento)
+router.put('/alteraragendamento/:id', celebrate({
+    [Segments.PARAMS]: {
+        id: Joi.number().required()
+    }
+}), alterarAgendamento)
+
 // alterar status
-router.put('/alterarstatus/:id', alterarStatus)
+router.put('/alterarstatus/:id', celebrate({
+    [Segments.PARAMS]: {
+        id: Joi.number().required()
+    }
+}), alterarStatus)
+
 // historico de agendamentos
-router.get('/historico/:id', historicoAgendamentos)
+router.get('/historico/:id', celebrate({
+    [Segments.PARAMS]: {
+        id: Joi.number().required()
+    }
+}),historicoAgendamentos)
 
 
 router.get('/viewusers', viewController)
 router.get('/', (req, res) => res.send('to vivo de novo'))
 
 module.exports = router
+
+
+""

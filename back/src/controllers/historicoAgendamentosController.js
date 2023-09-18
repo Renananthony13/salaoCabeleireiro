@@ -1,10 +1,9 @@
 const db = require('../config/db.js')
 
 async function historicoAgendamentos(req, res) {
-
-    const querySql = `SELECT * FROM agendamentos WHERE idusuario = ${req.params.id}`
+    const id_user = req.params.id
     try {
-        db.query(querySql, (error, data) => {
+        db.query('SELECT * FROM agendamentos WHERE idusuario =?', [id_user],(error, data) => {
             if(error) {
                 res.status(200).json(error)
             } else {

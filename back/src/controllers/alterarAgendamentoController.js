@@ -1,24 +1,28 @@
 const db = require('../config/db.js')
+const mysql = require('mysql2')
 
 function alterarAgendamento(req, res) {
-    let querySql = 'UPDATE agendamentos SET';
+    const valuesObj = req.body;
+    const idUser = req.params.id;
     let values = [];
-    let columns = Object.keys(req.body);
+    let updates = [];
 
-    columns.forEach((column, index) => {
-        querySql += ` ${column} = '${req.body[column]}'`
-        values.push(req.body[column]);
-
-        if(index < columns.length - 1) {
-            querySql += ',';
+    for(let el in valuesObj) {
+        // console.log(el, valuesObj[el])
+        if (valuesObj.hasOwnProperty(el)) {
+            updates.push(`${el} = ?`);
+            values.push(valuesObj[el]);
         }
-    });
+        
+    } 
 
-    querySql += ` WHERE idagendamento = ${req.params.id}`
-    values.push(req.params.id)
+
+    // const querySql = `UPDATE agendamentos SET ${values} WHERE idagendamento = ${mysql.escape(idUser)};`
+    const sql = `UPDATE agendamentos SET ${updates} WHERE idagendamento = ${idUser}`;
+  
 
     try{
-        db.query(querySql, (err, data) => {
+        db.query(sql, values, (err, data) => {
             if(err) {
                 console.log(err)
                 res.status(500).json(err)
@@ -61,3 +65,21 @@ module.exports = alterarAgendamento
 //         })
 //     }
 // })
+
+
+
+// let querySql = 'UPDATE agendamentos SET';
+    // let values = [];
+    // let columns = Object.keys(req.body);
+
+    // columns.forEach((column, index) => {
+    //     querySql += ` ${column} = '${req.body[column]}'`
+    //     values.push(req.body[column]);
+
+    //     if(index < columns.length - 1) {
+    //         querySql += ',';
+    //     }
+    // });
+
+    // querySql += ` WHERE idagendamento = ${req.params.id}`
+    // values.push(req.params.id)

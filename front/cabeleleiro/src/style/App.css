@@ -45,16 +45,16 @@
   padding: 1rem;
   list-style: none;
 }
-
+/* 
 li a {
   color: rgba(173, 186, 199, 1);
   text-decoration: none;
   text-transform: uppercase;
-}
-li:hover {
+} */
+/* li:hover {
   background-color: var(--background);
   
-}
+} */
 
 
 nav {

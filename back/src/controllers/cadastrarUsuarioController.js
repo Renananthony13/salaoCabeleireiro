@@ -1,25 +1,22 @@
 const db = require('../config/db.js')
 const bcrypt = require('bcrypt')
 
-async function createUsuario(req, res) {
+function createUsuario(req, res) {
     const {nome, email, telefone, senha} = req.body
 
-    console.log(req.body)
-
     try {
-       
-        const salt = 1;
-        const hashPassword = await bcrypt.hash(senha, salt);
-        console.log(hashPassword)
+        
+        const salt = Math.floor(Math.random() * (16 - 10) + 10);
+        const hashPassword = bcrypt.hashSync(senha, salt);
 
-        const querySql =  `INSERT INTO usuarios(nome, email, telefone, senha)
-        VALUES('${nome}', '${email}', '${telefone}', '${hashPassword}')`
-        db.query(querySql, (error, data) => {
+        // const querySql =  `INSERT INTO usuarios(nome, email, telefone, senha)
+        // VALUES('${nome}', '${email}', '${telefone}', '${hashPassword}')`
+        return db.query('INSERT INTO usuarios(nome, email, telefone, senha) VALUES(?, ?, ?, ?)', [nome, email, telefone, hashPassword], (error, data) => {
             if(error) {
-                res.status(200).json(error)
+                return res.status(200).json(error)
             } else {
                 console.log(data)
-                res.status(200).json(data)
+                return res.status(201).json('cadastro ou login efetuado')
             }
         })
       
@@ -27,6 +24,7 @@ async function createUsuario(req, res) {
         console.log(error)
     }
 }
+
 
 module.exports = createUsuario
 
