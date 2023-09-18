@@ -60,6 +60,3 @@ router.get('/viewusers', viewController)
 router.get('/', (req, res) => res.send('to vivo de novo'))
 
 module.exports = router
-
-
-""
