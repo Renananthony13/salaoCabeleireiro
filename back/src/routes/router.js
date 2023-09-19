@@ -38,6 +38,11 @@ router.post('/agendar/:id', celebrate({
 router.put('/alteraragendamento/:id', celebrate({
     [Segments.PARAMS]: {
         id: Joi.number().required()
+    },
+    [Segments.BODY]: {
+        descricao: Joi.string().required().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)),
+        status_agend: Joi.string().required().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)).min(3).max(10),
+        data_agend: Joi.date().required()
     }
 }), alterarAgendamento)
 
