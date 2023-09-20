@@ -1,6 +1,9 @@
 const express = require('express');
 const {celebrate, Segments, Joi} = require('celebrate')
 
+//
+const validaHora = require('../middlewares/validaHora')
+
 const router = express.Router();
 
 // rotas controller
@@ -41,8 +44,11 @@ router.put('/alteraragendamento/:id', celebrate({
     },
     [Segments.BODY]: {
         descricao: Joi.string().required().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)),
-        status_agend: Joi.string().required().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)).min(3).max(10),
-        data_agend: Joi.date().required()
+        status_agend: Joi.string().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)).min(3).max(10),
+        data_agend: Joi.date(),
+        hora_agend: Joi.string().custom(validaHora, 'validation'),
+        servicos: Joi.string().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)).min(3).max(100),
+        preco: Joi.string().pattern(new RegExp(/^[a-zA-Z0-9\s.,!?()"'-]+$/)).min(2).max(10)
     }
 }), alterarAgendamento)
 
