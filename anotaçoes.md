@@ -118,3 +118,11 @@ ex:
 {
     "status": "aprovado"
 }
+
+
+
+
+
+# teste usuario 
+rodrigo1@gmail.com
+123456789

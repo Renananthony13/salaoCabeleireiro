@@ -12,18 +12,20 @@ function newAgendamento(req, res) {
     function validaHora(hrAtual, hr) {
         let diferenca = hr.split(':')[0] - hrAtual.split(':')[0]
 
-        if(Math.sign(diferenca) >= 0) {
+        if(Math.sign(diferenca) === 0) {
             return Number(hr.split(':')[1]) >= Number(hrAtual.split(':')[1]) ? true : false
-        } else {
-            console.log(1)
+        } 
+        else if(Math.sign(diferenca) > 0) {
+            return true
+        }
+        else {
             return false
         }
 
     }
 
     const dataReq = data.split('-').reverse()
-    console.log(data)
-
+    
     if(Number(dataReq[1]) < (dataAtual.getMonth() + 1) || Number(dataReq[0]) < dataAtual.getDate()) {
         return res.status(500).send('Data nao possivel')
     } else if(Number(dataReq[0]) === dataAtual.getDate()) {

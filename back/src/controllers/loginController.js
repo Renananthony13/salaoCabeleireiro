@@ -1,10 +1,15 @@
 const db = require('../config/db.js');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 async function login(req, res) {
 
     // const querySql = `SELECT * FROM usuarios WHERE email = '${req.body.email}'`
     const email = req.body.email;
+
+    if(req.body.email === '' || req.body.senha === '') {
+        return res.status(422).json('Algum campo esta vazio')
+    }
 
     // console.log(querySql)
 
@@ -24,7 +29,17 @@ async function login(req, res) {
                         if(!response) {
                             return res.status(401).send('Usuario ou senha invalido');
                         } else {
-                            res.status(200).json('Login efetuado com sucesso!!')
+                        
+                            const idUser = data[0].idusuario;
+                            const emailUser = data[0].email;
+                            let token_ = jwt.sign({idUser, emailUser}, process.env.SECRETKEY, {expiresIn: '1hr'})
+
+                            res.status(200).json({
+                                erro: 'false',
+                                mensagem: 'Login efetuado com sucesso!!',
+                                token: token_
+                            })
+
                         }
                     }
                 }) 
@@ -32,41 +47,6 @@ async function login(req, res) {
             }
         })
 
-        // if(data.length === 0) {
-        //     console.log('errou')
-        // } else {
-        //     console.log(data)
-        //     const senhaTeste = bcrypt.compare(req.body.senha, data[0].senha)
-
-        //     if(senhaTeste) {
-        //         res.send('Login efetuado com sucesso')
-        //     } else {
-        //         res.status(401).json('Usuario ou senha invalido')
-        //     }
-
-        // }
-
-        // db.query(querySql, (err, data) => {
-        //     if(err) {
-        //         console.log(err)
-        //         res.status(500).json(err)
-        //     } 
-        //     // else if(data.length === 0) {
-        //     //     console.log('aqui')
-        //     //     return res.status(401).send('Usuario ou senha invalido');
-        //     // } 
-        //     else {
-        //         console.log(data)
-        //         const senhaTeste = bcrypt.compare(req.body.senha, data[0].senha)
-
-        //         if(senhaTeste) {
-        //             res.send('Login efetuado com sucesso')
-        //         } else {
-        //             res.status(401).json('Usuario ou senha invalido')
-        //         }
-
-        //     }
-        // })
 
     } catch(error) {
         console.log(error)

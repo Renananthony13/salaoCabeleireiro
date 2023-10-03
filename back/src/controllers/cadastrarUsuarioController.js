@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 function createUsuario(req, res) {
     const {nome, email, telefone, senha} = req.body
 
+    // se campo estiver vazio, retornar erro
+
     try {
         
         const salt = Math.floor(Math.random() * (16 - 10) + 10);
@@ -27,5 +29,6 @@ function createUsuario(req, res) {
 
 
 module.exports = createUsuario
+
 
 

@@ -1,0 +1,78 @@
+:root {
+    --background: rgba(34, 39, 46, 1);
+    --background-second: rgba(28, 33, 40, 1);
+    --border-color: rgba(82, 255, 168, 0.49);
+    --label-color: rgba(173, 186, 199, 1);
+}
+  
+
+
+/* .page {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+   
+} */
+
+.pageAgendamento {
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
+
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.pageAgendamento .divForm {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 2.5rem;
+
+    border-radius: 8px;
+    box-shadow: 2px 1px 8px 0.1px rgba(0, 0, 0, 0.657);
+
+
+}
+
+/* .pageAgendamento form {
+display: flex;
+flex-direction: column;
+row-gap: 0.5rem;
+padding: 1rem;
+
+} */
+
+
+.pageAgendamento form label {
+display: flex;
+flex-direction: column;
+text-align: left;
+}
+
+form button {
+border-radius: 15px;
+padding: 0.3rem;
+border-style: none;
+background-color: blue;
+color: white;
+}
+
+form input {
+border: none;
+border-bottom: 1px solid black;
+
+padding: 0.5rem;
+margin-top: 0.5rem;
+}
+
+form input:focus {
+box-shadow: 0 0 0 0;
+outline: 0;
+}
+

@@ -1,12 +1,18 @@
 import './style/App.css'
-import { Cabelereiro } from '../src/components/Cabelereiro'
+import RoutesPage from './routes/RoutesPage'
+import NavBar from './components/navbar/navBar'
 
 
 function App() {
 
+  // const localLocation = window.location.pathname;
+
+  // const showNavbar = localLocation !== '/' 
+
   return (
     <>
-      <Cabelereiro />
+      {/* {showNavbar && <NavBar />} */}
+      <RoutesPage />
     </>
   )
 }
