@@ -43,12 +43,17 @@ export default function CadastroForm() {
               // console.log('Resposta do servidor:', response.data)
               return redirectRoter()
             })
-            .catch((error) => console.log(error))
+            .catch((error) => {
+              // console.log(error)
+              console.log('deu ruim ')
+
+            })
           
           
 
         } catch (error) {
-          console.error(error);
+          // console.error(error);
+          console.log('deu ruim ')
         }
       };
 
